@@ -1,3 +1,10 @@
+import os # Add this line
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+import json
+import uuid
 # app.py (inside your backend folder)
 
 from flask import Flask, request, jsonify
@@ -13,10 +20,13 @@ app = Flask(__name__)
 # Enable CORS for communication with frontend (IMPORTANT!)
 CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5500"}})
 
+
 # --- Database Configuration ---
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+# Use DATABASE_URL environment variable for cloud deployment, fallback to SQLite for local
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///site.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# ... (rest of your app.py) ...
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
 
