@@ -29,7 +29,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # ... (rest of your app.py) ...
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
-
+app.config['PYTHON_VERSION'] = '3.12.x'
 # --- Database Models ---
 class User(db.Model):
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
