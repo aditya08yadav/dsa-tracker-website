@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.env
+venv/
+site.db  # Ignore your local SQLite database file
+
+# macOS
+.DS_Store
+
+# Migration script (if you don't want to push it)
+migrate_data.py

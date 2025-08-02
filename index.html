@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My DSA Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your DSA Tracker!</h1>
+        <nav>
+            <ul>
+                <li><a href="#" data-page="home-section" class="nav-link active">Home</a></li>
+                <li><a href="#" data-page="add-problem-section" class="nav-link">Add Problem</a></li>
+                <li><a href="#" data-page="my-progress-section" class="nav-link">My Progress</a></li>
+                <li><a href="#" data-page="class-notes-section" class="nav-link">Class Notes</a></li>
+                <li><a href="#" data-page="shared-problems-section" class="nav-link">Shared Problems</a></li>
+                <li><a href="#" data-page="register-section" class="nav-link">Register</a></li>
+                <li><a href="#" data-page="login-section" class="nav-link">Login</a></li>
+            </ul>
+        </nav>
+        <div id="user-info-bar" class="hidden">
+            Welcome, <span id="logged-in-username"></span>!
+            <button id="logout-btn">Logout</button>
+        </div>
+    </header>
+
+<main>
+    <section id="home-section" class="page-section">
+        <section id="overview">
+            <h2>Your DSA Journey</h2>
+            <p>Track your progress, notes, and solutions for Data Structures and Algorithms.</p>
+            <p>Let's get started!</p>
+        </section>
+    </section>
+
+    <section id="add-problem-section" class="page-section hidden">
+        <section id="add-problem-form">
+            <h2>Add New Problem</h2>
+            <form>
+                <label for="problem-name">Problem Name:</label><br>
+                <input type="text" id="problem-name" name="problem-name" required><br><br>
+
+                <label for="problem-link">External Link (e.g., LeetCode):</label><br>
+                <input type="url" id="problem-link" name="problem-link"><br><br>
+
+                <label for="topic">Associated Topic:</label><br>
+                <select id="topic" name="topic">
+                    <option value="">--Select a Topic--</option>
+                    <option value="Arrays">Arrays</option>
+                    <option value="Linked Lists">Linked Lists</option>
+                    <option value="Trees">Trees</option>
+                    <option value="Dynamic Programming">Dynamic Programming</option>
+                    <option value="Graphs">Graphs</option>
+                    <option value="Strings">Strings</option>
+                    <option value="Sorting">Sorting</option>
+                    <option value="Searching">Searching</option>
+                    <option value="Hash Tables">Hash Tables</option>
+                    <option value="Stack">Stack</option>
+                    <option value="Queue">Queue</option>
+                </select><br><br>
+
+                <label for="difficulty">Difficulty Level:</label><br>
+                <input type="radio" id="easy" name="difficulty" value="easy">
+                <label for="easy">Easy</label><br>
+                <input type="radio" id="medium" name="difficulty" value="medium">
+                <label for="medium">Medium</label><br>
+                <input type="radio" id="hard" name="difficulty" value="hard">
+                <label for="hard">Hard</label><br><br>
+
+                <label for="time-complexity">Time Complexity:</label><br>
+                <input type="text" id="time-complexity" name="time-complexity" placeholder="e.g., O(N) or O(N log N)"><br><br>
+
+                <label for="space-complexity">Space Complexity:</label><br>
+                <input type="text" id="space-complexity" name="space-complexity" placeholder="e.g., O(1) or O(N)"><br><br>
+                <label for="notes">Personal Notes:</label><br>
+                <textarea id="notes" name="notes" rows="5" cols="50"></textarea><br><br>
+
+                <input type="checkbox" id="solved" name="solved">
+                <label for="solved">Mark as Solved</label><br><br>
+
+                <input type="submit" value="Add Problem">
+            </form>
+        </section>
+    </section>
+
+    <section id="my-progress-section" class="page-section hidden">
+        <section id="statistics-display">
+            <h2>Your Progress Stats</h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total Problems</h3>
+                    <p id="total-problems">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Problems Solved</h3>
+                    <p id="solved-problems">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Important Problems</h3>
+                    <p id="important-problems">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Completion Rate</h3>
+                    <p id="completion-percentage">0%</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="search-section">
+            <h2>Find Your Problems</h2>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search by name, topic, or notes...">
+            </div>
+        </section>
+
+        <section id="topic-breakdown-section">
+            <h2>Topic-wise Progress</h2>
+            <div id="topic-breakdown-container">
+                <p>Add problems to see topic breakdown.</p>
+            </div>
+        </section>
+
+        <section id="problems-list">
+            <h2>Your Tracked Problems</h2>
+            <div id="problems-container">
+                <p>No matching problems found. Try a different search!</p>
+            </div>
+        </section>
+    </section>
+
+    <section id="class-notes-section" class="page-section hidden">
+        <h2>Your Class Notes</h2>
+        <section id="add-note-form">
+            <h3>Add New Note Entry</h3>
+            <form>
+                <label for="note-title">Note/Lecture Title:</label><br>
+                <input type="text" id="note-title" name="note-title" required><br><br>
+
+                <label for="note-topic">Associated Topic:</label><br>
+                <select id="note-topic" name="note-topic">
+                    <option value="">--Select a Topic--</option>
+                    <option value="Arrays">Arrays</option>
+                    <option value="Linked Lists">Linked Lists</option>
+                    <option value="Trees">Trees</option>
+                    <option value="Dynamic Programming">Dynamic Programming</option>
+                    <option value="Graphs">Graphs</option>
+                    <option value="Strings">Strings</option>
+                    <option value="Sorting">Sorting</option>
+                    <option value="Searching">Searching</option>
+                    <option value="Hash Tables">Hash Tables</option>
+                    <option value="Stack">Stack</option>
+                    <option value="Queue">Queue</option>
+                </select><br><br>
+
+                <label for="note-link">External PDF/Note Link:</label><br>
+                <input type="url" id="note-link" name="note-link" placeholder="e.g., link to your OneNote/Drive PDF"><br><br>
+
+                <label for="note-remarks">Personal Remarks/Key Takeaways:</label><br>
+                <textarea id="note-remarks" name="note-remarks" rows="5" cols="50"></textarea><br><br>
+
+                <input type="submit" value="Add Note">
+            </form>
+        </section>
+
+        <section id="notes-list">
+            <h3>All Your Notes</h3>
+            <div id="notes-container">
+                <p>No notes added yet. Use the form above to get started!</p>
+            </div>
+        </section>
+    </section>
+
+    <section id="register-section" class="page-section hidden">
+        <h2>Register New Account</h2>
+        <form id="user-register-form">
+            <label for="reg-username">Username:</label><br>
+            <input type="text" id="reg-username" name="username" required><br><br>
+
+            <label for="reg-password">Password:</label><br>
+            <input type="password" id="reg-password" name="password" required><br><br>
+
+            <input type="submit" value="Register">
+        </form>
+        <p class="message-area" id="register-message"></p>
+    </section>
+
+    <section id="login-section" class="page-section hidden">
+        <h2>Login to Your Account</h2>
+        <form id="user-login-form">
+            <label for="login-username">Username:</label><br>
+            <input type="text" id="login-username" name="username" required><br><br>
+
+            <label for="login-password">Password:</label><br>
+            <input type="password" id="login-password" name="password" required><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+        <p class="message-area" id="login-message"></p>
+    </section>
+
+    <section id="shared-problems-section" class="page-section hidden">
+        <h2>Shared Public Problems</h2>
+        <div id="public-problems-container">
+            <p>Loading public problems...</p>
+        </div>
+    </section>
+
+</main>
+
+    <footer>
+        <p>&copy; 2025 DSA Tracker. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

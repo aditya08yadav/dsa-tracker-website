@@ -1,0 +1,968 @@
+/* Basic Reset & Body Styling */
+body {
+    font-family: 'Roboto', sans-serif; /* Applied Roboto font */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* Navigation Bar Styling */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: #45a049;
+}
+
+/* Active Navigation Link Styling */
+nav ul li a.active {
+    background-color: #367c39;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2) inset;
+}
+
+/* User Info Bar Styling */
+#user-info-bar {
+    text-align: right;
+    padding: 5px 20px;
+    font-size: 0.9em;
+    background-color: #4CAF50; /* Matches header */
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    border-bottom-left-radius: 5px;
+    display: flex; /* For aligning Welcome message and button */
+    align-items: center;
+    gap: 10px;
+}
+
+#user-info-bar.hidden {
+    display: none;
+}
+
+#logout-btn {
+    background-color: #f44336; /* Red logout button */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: background-color 0.3s ease;
+}
+
+#logout-btn:hover {
+    background-color: #d32f2f;
+}
+
+
+/* Main Content Area */
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* Section Headings */
+section h2 {
+    color: #4CAF50;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+#add-problem-form, #add-note-form, #register-form, #user-login-form {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+#add-problem-form label, #add-note-form label, #register-form label, #user-login-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#add-problem-form input[type="text"],
+#add-problem-form input[type="url"],
+#add-problem-form select,
+#add-problem-form textarea,
+#add-note-form input[type="text"],
+#add-note-form input[type="url"],
+#add-note-form select,
+#add-note-form textarea,
+#register-form input[type="text"],
+#register-form input[type="password"],
+#user-login-form input[type="text"],
+#user-login-form input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#add-problem-form input[type="radio"] {
+    margin-right: 5px;
+}
+
+#add-problem-form input[type="submit"], #add-note-form input[type="submit"], #register-form input[type="submit"], #user-login-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 44px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#add-problem-form input[type="submit"]:hover, #add-note-form input[type="submit"]:hover, #register-form input[type="submit"]:hover, #user-login-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #333;
+    color: white;
+    font-size: 0.9em;
+}
+/* Problems List Styling */
+#problems-container, #public-problems-container { /* Applied to both private and public lists */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.problem-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Style for the problem title with star */
+.problem-card .problem-title-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.problem-card p {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.problem-card p strong {
+    color: #4CAF50;
+}
+
+.problem-card .notes-preview {
+    font-style: italic;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+}
+
+.problem-card .footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.problem-card.solved {
+    border-left: 5px solid #4CAF50;
+    background-color: #e6ffe6;
+}
+
+/* Delete Button Styling */
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 15px;
+    align-self: flex-end;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Solved Checkbox/Toggle Styling */
+.solved-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.solved-toggle-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #4CAF50;
+}
+
+/* Important Flag Styling - Star Icon */
+.flag-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #ccc;
+    transition: color 0.3s ease;
+    line-height: 1;
+    position: relative;
+    top: -0.1em;
+}
+
+.flag-btn:hover {
+    color: #ffcc00;
+    background: none;
+}
+
+.flag-btn.important {
+    color: #ff4500;
+}
+
+.flag-btn.important:hover {
+    color: #cc3700;
+}
+
+/* Statistics Section Styling */
+#statistics-display {
+    background-color: #f0f8f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+#statistics-display h2 {
+    color: #366f39;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.stat-card {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    min-width: 150px;
+    flex: 1;
+}
+
+.stat-card h3 {
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 2em;
+    font-weight: bold;
+    color: #4CAF50;
+    margin: 0;
+}
+
+/* Search Section Styling */
+#search-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+#search-section .search-container {
+    text-align: center;
+}
+
+#search-input {
+    width: 80%;
+    max-width: 500px;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 1.1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#search-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+/* Topic Breakdown Section Styling */
+#topic-breakdown-section {
+    background-color: #eaf7ea;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+#topic-breakdown-section h2 {
+    color: #366f39;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#topic-breakdown-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.topic-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    flex: 1 1 200px;
+    max-width: 300px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.topic-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 1.2em;
+}
+
+.topic-progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 10px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.topic-progress-bar-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+}
+
+.topic-card p {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+/* Hidden class for page sections */
+.page-section.hidden {
+    display: none;
+}
+
+/* Solution Toggle Button */
+.toggle-solution-btn {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85em;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-solution-btn:hover {
+    background-color: #1976D2;
+}
+
+/* Solution Editor/Viewer Container */
+.solution-editor-container {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+}
+
+.solution-editor-container textarea {
+    width: calc(100% - 20px);
+    min-height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+    background-color: #f8f8f8;
+    resize: vertical;
+}
+
+.save-solution-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.save-solution-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Class Notes Section Styling */
+#add-note-form {
+    background-color: #f0f8ff;
+    padding: 25px;
+    border-radius: 5px;
+    border: 1px solid #cceeff;
+    margin-bottom: 20px;
+}
+
+#notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.note-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.note-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.note-card p {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.note-card p strong {
+    color: #2196F3;
+}
+
+.note-card .remarks-preview {
+    font-style: italic;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+}
+
+.note-card .footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.note-card .view-note-link {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 0.9em;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.note-card .view-note-link:hover {
+    background-color: #45a049;
+}
+
+.note-card .delete-note-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 15px;
+    align-self: flex-end;
+    transition: background-color 0.3s ease;
+}
+
+.note-card .delete-note-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Message Area for login/register */
+.message-area {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #333;
+    background-color: #e0e0e0;
+}
+
+.message-area.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message-area.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+/* Leaderboard Styling (Removed) */
+
+/* Shared Problems Viewer Styling */
+#shared-problems-section {
+    background-color: #eaf7ea; /* Very light green */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+#public-problems-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.public-problem-card { /* Similar to problem-card, but for public view */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.public-problem-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.public-problem-card p {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.public-problem-card p strong {
+    color: #28a745; /* Green for public problem details */
+}
+
+.public-problem-card .public-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #007bff; /* Blue badge */
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.public-problem-card .public-author {
+    font-size: 0.85em;
+    color: #555;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+/* // yha se nya add krra hu */
+
+/* General Body Enhancements */
+body {
+    background: linear-gradient(135deg, #e0f2f7, #d4edda); /* Subtle gradient background */
+    min-height: 100vh; /* Ensure body takes full height for gradient */
+    display: flex; /* For footer to stick to bottom if content is short */
+    flex-direction: column;
+}
+
+/* Header Enhancements */
+header {
+    background: linear-gradient(to right, #4CAF50, #2E8B57); /* Green gradient */
+    padding: 1.5em 0; /* More vertical padding */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Stronger, softer shadow */
+}
+
+header h1 {
+    font-size: 3em; /* Slightly larger title */
+    letter-spacing: 1px; /* Add slight spacing */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Subtle text shadow */
+}
+
+/* Navigation - Pill Shape */
+nav ul li a {
+    padding: 8px 20px; /* More padding */
+    border-radius: 20px; /* Pill shape */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add transform transition */
+}
+
+nav ul li a:hover {
+    background-color: rgba(255,255,255,0.2); /* Lighter hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+nav ul li a.active {
+    background-color: rgba(255,255,255,0.3); /* More transparent active state */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2) inset, 0 0 10px rgba(255,255,255,0.5); /* Inner and outer glow */
+}
+
+/* User Info Bar Styling */
+#user-info-bar {
+    background-color: #2E8B57; /* Darker green for distinction */
+    padding: 8px 25px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#logout-btn {
+    background-color: #e74c3c; /* Brighter red */
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#logout-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+
+/* Main Content Area */
+main {
+    flex-grow: 1; /* Allows main content to expand and push footer down */
+    max-width: 960px; /* Slightly wider */
+    padding: 30px; /* More padding */
+    border-radius: 12px; /* Softer corners */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* More pronounced shadow */
+}
+
+/* Section Headings */
+section h2 {
+    color: #2E8B57; /* Match darker green */
+    border-bottom: 2px solid #a8dfb5; /* Lighter, more subtle line */
+    padding-bottom: 15px; /* More space below line */
+    margin-bottom: 30px;
+    font-size: 2em; /* Slightly larger */
+    text-align: center; /* Center section titles */
+}
+
+/* Form Styling */
+#add-problem-form, #add-note-form, #user-register-form, #user-login-form {
+    background-color: #ffffff; /* White forms */
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0; /* Subtle border */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Soft shadow */
+}
+
+#add-problem-form input[type="text"],
+#add-problem-form input[type="url"],
+#add-problem-form select,
+#add-problem-form textarea,
+#add-note-form input[type="text"],
+#add-note-form input[type="url"],
+#add-note-form select,
+#add-note-form textarea,
+#user-register-form input[type="text"],
+#user-register-form input[type="password"],
+#user-login-form input[type="text"],
+#user-login-form input[type="password"] {
+    border: 1px solid #c0e0c0; /* Green tint border */
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 1.05em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#add-problem-form input[type="text"]:focus,
+#add-problem-form input[type="url"]:focus,
+#add-problem-form select:focus,
+#add-problem-form textarea:focus,
+#add-note-form input[type="text"]:focus,
+#add-note-form input[type="url"]:focus,
+#add-note-form select:focus,
+#add-note-form textarea:focus,
+#user-register-form input[type="text"]:focus,
+#user-register-form input[type="password"]:focus,
+#user-login-form input[type="text"]:focus,
+#user-login-form input[type="password"]:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+    outline: none;
+}
+
+
+#add-problem-form input[type="submit"], #add-note-form input[type="submit"], #user-register-form input[type="submit"], #user-login-form input[type="submit"] {
+    background-color: #28a745; /* Deeper green */
+    padding: 14px 25px; /* More padding */
+    border-radius: 50px; /* Fully rounded buttons */
+    box-shadow: 0 4px 8px rgba(40,167,69,0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#add-problem-form input[type="submit"]:hover, #add-note-form input[type="submit"]:hover, #user-register-form input[type="submit"]:hover, #user-login-form input[type="submit"]:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(40,167,69,0.4);
+}
+
+/* Problems and Notes Card Styling */
+.problem-card, .note-card, .stat-card, .topic-card, .public-problem-card {
+    border-radius: 10px; /* Softer corners for cards */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* More pronounced shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.problem-card:hover, .note-card:hover, .stat-card:hover, .topic-card:hover, .public-problem-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Stronger shadow on hover */
+}
+
+.problem-card .problem-title-flex h3 {
+    color: #34495e; /* Darker title text */
+}
+
+/* Solved indicator */
+.solved-indicator {
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+
+/* Buttons within cards */
+.delete-btn, .toggle-solution-btn, .save-solution-btn, .note-card .delete-note-btn {
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.delete-btn:hover, .note-card .delete-note-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(244,67,54,0.3);
+}
+
+.toggle-solution-btn {
+    background-color: #1a73e8; /* Google Blue */
+}
+.toggle-solution-btn:hover {
+    background-color: #155cb0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(26,115,232,0.3);
+}
+
+.save-solution-btn {
+    background-color: #008CBA; /* Sky Blue */
+}
+.save-solution-btn:hover {
+    background-color: #006b8e;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,140,186,0.3);
+}
+
+
+/* Statistics Section */
+#statistics-display {
+    background: linear-gradient(to right, #e0ffe0, #c8f5c8); /* Soft green gradient */
+    border: 1px solid #b3e6b3;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.stat-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.stat-card p {
+    font-size: 2.2em; /* Slightly larger stat numbers */
+    color: #28a745; /* Deeper green */
+}
+
+/* Search Section */
+#search-input {
+    border-radius: 30px; /* More rounded */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05) inset; /* Inner shadow for depth */
+}
+
+#search-input:focus {
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.3); /* Stronger glow on focus */
+}
+
+/* Topic Breakdown */
+#topic-breakdown-section {
+    background-color: #f7fcf7; /* Very light green */
+    border: 1px solid #e0e0e0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.topic-progress-bar {
+    background-color: #e0f2e0; /* Lighter base for progress bar */
+}
+
+.topic-progress-bar-fill {
+    background-color: #4CAF50; /* Primary green */
+    box-shadow: 0 0 5px rgba(76,175,80,0.5); /* Subtle glow */
+}
+
+/* Footer Styling */
+footer {
+    background-color: #2c3e50; /* Darker, richer footer */
+    padding: 25px;
+    margin-top: auto; /* Pushes footer to bottom */
+    border-top: 2px solid #34495e;
+}
+
+/* Message Area for login/register */
+.message-area.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+    box-shadow: 0 2px 5px rgba(212,237,218,0.5);
+}
+
+.message-area.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    box-shadow: 0 2px 5px rgba(248,215,218,0.5);
+}
+
+/* Shared Public Problems Styling */
+.public-problem-card {
+    border: 1px solid #d0e0d0; /* Soft green border */
+    background-color: #fefefe;
+}
+
+.public-problem-card .public-badge {
+    background-color: #007bff; /* Blue badge, consistent */
+    box-shadow: 0 2px 5px rgba(0,123,255,0.3);
+}
+
+.public-problem-card .public-author {
+    color: #777;
+    font-style: normal; /* Remove italic for author */
+    font-weight: 500;
+}
